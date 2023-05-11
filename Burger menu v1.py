@@ -1,1 +1,0 @@
-print(hi will konichiwa)
