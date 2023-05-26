@@ -64,18 +64,18 @@ def delete_card():
 def search_card():
     search = easygui.enterbox("Enter the name of the monster card")
     match_cards = []
-    for card in catalogue:
-        if card["name"].lower() == search.lower():
+    for card in catalogue.values():
+        if card["Name"].lower() == search.lower():
             match_cards.append(card)
     if match_cards:
-        print("Search Results for '{}'".format(search))
-        print("Name\t\t\tType")
+        search_results_str = "Name\t\t\tStrength\tSpeed\tStealth\tCunning\n"
         for card in match_cards:
-            print("{}\t{}".format(card['name'], card['type']))
-        easygui.msgbox("Search Results for '{}'".format(search),
-                   title="Search Results")
+            search_results_str += "{}\t{}\t{}\t{}\t{}\n".format(
+                card["Name"], card["card_strength"], card["card_speed"],
+                card["card_stealth"], card["card_cunning"])
+        easygui.msgbox(search_results_str, title="Search Results for '{}'".format(search))
     else:
-        print("No cards match '{}' in your catalogue.".format(search))
+        easygui.msgbox("No cards match '{}' in your catalogue.".format(search))
 
 
 def output():
