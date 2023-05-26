@@ -1,7 +1,7 @@
 import easygui
 
 #Dictionary
-Catalogue = {"Stoneling":{"Name": "Stoneling", "Strength": 7, "Speed": 1, "Stealth": 25, "Cunning": 15},
+ catalogue = {"Stoneling":{"Name": "Stoneling", "Strength": 7, "Speed": 1, "Stealth": 25, "Cunning": 15},
          "Vexscream":{"Name": "Vexscream", "Strength": 1, "Speed": 6, "Stealth": 21, "Cunning": 19},
          "Downmirage":{"Name": "Downmirage", "Strength": 1, "Speed": 6, "Stealth": 21, "Cunning": 19},
          "Blazegolem":{"Name": "Blazegolem", "Strength": 15, "Speed": 20, "Stealth": 23, "Cunning": 6},
@@ -14,24 +14,37 @@ Catalogue = {"Stoneling":{"Name": "Stoneling", "Strength": 7, "Speed": 1, "Steal
 
 def manu():
     choices = ["add new cards", "Delete cards", "Edit", "Print Catalogue", "Output All", "Exit"]
-    choice = easygui.buttonbox("Choose an option:", choices=choices)
+    choice = easygui.buttonbox("Choose an option:", choice=choice)
 
-    def add_card():
+ def add_card():
         card_name = easygui.enterbox("Enter the name of the monster card:")
         card_strength = easygui.enterbox("Enter the strength of the monster card:")
         card_speed = easygui.enterbox("Enter the speed of the monster card:")
         card_stealth = easygui.enterbox("Enter the stealth of the monster card:")
         card_cunning = easygui.enterbox("Enter the cunning of the monster card:")
      catalogue.insert()
-gui.msgbox(print("Added {card_name} ({card_strength}) ({card_speed}) ({card_stealth}) ({card_cunning}) to the catalogue."))
+easygui.msgbox(print("Added {card_name} ({card_strength}) ({card_speed}) ({card_stealth}) ({card_cunning}) to the catalogue."))
 
-  choice = gui.buttonbox("Choose an action:", choices=["Add card", "Delete card", "Display catalogue", "Quit"])
+def delete_card():
+        card_name = easygui.enterbox("Enter the name of the monster card")
+        for card in catalogue:
+            if card["name"] == card_name:
+                catalogue.remove(card)
+                easygui.msgbox(f"Deleted {card_name} from the catalogue.")
+                return
+
+
+while True:
+        choice = easygui.buttonbox("Choose an action:",
+                               choices=["Catalogue", "Add card", "Delete card",
+                                        "Find a card", "Exit"])
         if choice == "Add card":
             add_card()
         elif choice == "Delete card":
             delete_card()
-        elif choice == "Display catalogue":
-            display_catalogue()
-        elif choice == "Quit":
+        elif choice == "Find a card":
+            search_card()
+        elif choice == "Catalogue":
+            print_catalogue()
+        elif choice == "Exit":
             break
-display_menu()
