@@ -13,7 +13,8 @@ catalogue = {
                  "card_stealth": 10, "card_cunning": 5},
     "Moldvine": {"Name": "Moldvine", "card_strength": 21, "card_speed": 18,
                  "card_stealth": 14, "card_cunning": 5},
-    "Vortexwing": {"Name": "Vortexwing", "card_strength": 19, "card_speed": 13,
+    "Vortexwing": {"Name": "Vortexwing", "card_strength": 19,
+                   "card_speed": 13,
                    "card_stealth": 19, "card_cunning": 2},
     "Rotthing": {"Name": "Rotthing", "card_strength": 16, "card_speed": 7,
                  "card_stealth": 4, "card_cunning": 12},
@@ -36,7 +37,8 @@ def print_catalogue():
 def add_card():
     #the enter boxes
     card_name = easygui.enterbox("Enter the name of the monster card:")
-    card_strength = easygui.enterbox("Enter the strength of the monster card:")
+    card_strength = easygui.enterbox("Enter the strength of the "
+                                     "monster card:")
     card_speed = easygui.enterbox("Enter the speed of the monster card:")
     card_stealth = easygui.enterbox("Enter the stealth of the monster card:")
     card_cunning = easygui.enterbox("Enter the cunning of the monster card:")
@@ -76,10 +78,12 @@ def search_card():
             search_results_str += "{}\t{}\t{}\t{}\t{}\n".format(
                 card["Name"], card["card_strength"], card["card_speed"],
                 card["card_stealth"], card["card_cunning"])
-        easygui.msgbox(search_results_str, title="Search Results for '{}'".format(search))
+        easygui.msgbox(search_results_str, title="Search Results for "
+                                                 "'{}'".format(search))
     #if not
     else:
-        easygui.msgbox("No cards match '{}' in your catalogue.".format(search))
+        easygui.msgbox("No cards match '{}' in your catalogue."
+                       .format(search))
 
 #output function
 def output():
